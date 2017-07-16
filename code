@@ -1,0 +1,104 @@
+printf "Checking if Telnet is removed: "
+if rpm -q telnet-server; read | grep "not installed" ; then
+	printf "\e[32mPASS\e0[39m"
+else
+	printf "\e[31mFAIL\e0[39m"
+fi
+
+printf "Checking if RSH is removed: "
+if [ rpm -q rsh-server; read | grep "not installed" ] && [ rpm -q rsh; read | grep "not installed" ] ; then
+	printf "\e[32mPASS\e0[39m"
+else
+	printf "\e[31mFAIL\e0[39m"
+fi
+
+printf "Checking if NIS is removed: "
+if [ rpm -q ypserv; read | grep "not installed" ] && [ rpm -q ypbind; read | grep "not installed" ] ; then
+	printf "\e[32mPASS\e0[39m"
+else
+	printf "\e[31mFAIL\e0[39m"
+fi
+
+printf "Checking if TFTP is removed: "
+if [ rpm -q tftp; read | grep "not installed" ] && [ rpm -q tftp-server; read | grep "not installed" ] ; then
+	printf "\e[32mPASS\e0[39m"
+else
+	printf "\e[31mFAIL\e0[39m"
+fi
+
+printf "Checking if xinetd is removed: "
+if [ rpm -q xinetd; read | grep "not installed" ] ; then
+	printf "\e[32mPASS\e0[39m"
+else
+	printf "\e[31mFAIL\e0[39m"
+fi
+
+printf "Checking if chargen-dgram is disabled: "
+if chkconfig --list chargen-dgram | grep "chargen-dgram[[:space:]]off" ; then
+	printf "\e[32mPASS\e0[39m"
+else
+	printf "\e[31mFAIL\e0[39m"
+fi
+
+printf "Checking if chargen-stream is disabled: "
+if chkconfig --list chargen-stream | grep "chargen-stream[[:space:]]off" ; then
+	printf "\e[32mPASS\e0[39m"
+else
+	printf "\e[31mFAIL\e0[39m"
+fi
+
+printf "Checking if daytime-dgram is disabled: "
+if chkconfig --list daytime-dgram | grep "daytime-dgram[[:space:]]off" ; then
+	printf "\e[32mPASS\e0[39m"
+else
+	printf "\e[31mFAIL\e0[39m"
+fi
+
+printf "Checking if daytime-stream is disabled: "
+if chkconfig --list daytime-stream | grep "daytime-stream[[:space:]]off" ; then
+	printf "\e[32mPASS\e0[39m"
+else
+	printf "\e[31mFAIL\e0[39m"
+fi
+
+printf "Checking if echo-dgram is disabled: "
+if chkconfig --list echo-dgram | grep "echo-dgram[[:space:]]off" ; then
+	printf "\e[32mPASS\e0[39m"
+else
+	printf "\e[31mFAIL\e0[39m"
+fi
+
+printf "Checking if echo-stream is disabled: "
+if chkconfig --list echo-stream | grep "echo-stream[[:space:]]off" ; then
+	printf "\e[32mPASS\e0[39m"
+else
+	printf "\e[31mFAIL\e0[39m"
+fi
+
+printf "Checking if tcpmux-server is disabled: "
+if chkconfig --list tcpmux-serer | grep "tcpmux-server[[:space:]]off" ; then
+	printf "\e[32mPASS\e0[39m"
+else
+	printf "\e[31mFAIL\e0[39m"
+fi
+
+printf "Checking if umask is of the recommended value: "
+if grep ^umask /etc/sysconfig/init | grep "027" ; then
+	printf "\e[32mPASS\e0[39m"
+else
+	printf "\e[31mFAIL\e0[39m"
+fi
+
+printf "Checking if GUI is the default boot target: "
+if ls -l /etc/systemd/system/default.target | grep "graphical.target" ; then
+	printf "\e[32mGUI is the default boot target - nothing to do. Check if CLI is preferred and X11 can be removed\e[39m"
+else
+	printf "\e[31mGUI is not the default boot target - please check and decide if X11 can be removed.\e[39m"
+fi
+
+printf "Checking if Avahi Daemon is disabled: "
+if [ systemctl status avahi-daemon | grep "active (running)" ] || [ systemctl status avahi-daemon | grep "enabled" ] ; then
+	printf "\e[32m\e0[39m"
+else
+	printf "\e[31mFAIL\e0[39m"
+fi
