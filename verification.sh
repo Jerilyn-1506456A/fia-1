@@ -3,23 +3,23 @@
 printf "\e[1mRunning Scan for Red Hat Enterprise Linux 7.3 System Configurations...\n"
 printf "Checks on Partitions and Files\e[0m\n"
 printf "Checking if /tmp is on a separate partition: "
-if grep "[[:space:]]/tmp[[:space:]]" /etc/fstab ; then
+if grep "[[:space:]]/tmp[[:space:]]" /etc/fstab >/dev/null; then
 	printf "\e[32mPASS\e[0m\n"
 	printf "Checking if /tmp has nodev: "
-	if grep "[[:space:]]/tmp[[:space:]]" /etc/fstab | grep "nodev" ; then
+	if grep "[[:space:]]/tmp[[:space:]]" /etc/fstab | grep "nodev" >/dev/null; then
 		printf "\e[32mPASS\e[0m\n"
 	else
 		printf "\e[31mFAIL\e[0m\n"
 	fi
 	printf "Checking if /tmp has nosuid: "
-	if grep "[[:space:]]/tmp[[:space:]]" /etc/fstab | grep "nosuid" ; then
+	if grep "[[:space:]]/tmp[[:space:]]" /etc/fstab | grep "nosuid" >/dev/null; then
 		printf "\e[32mPASS\e[0m\n"
 	else
 		printf "\e[31mFAIL\e[0m\n"
 	fi
 
 	printf "Checking if /tmp has noexec: "
-	if grep "[[:space:]]/tmp[[:space:]]" /etc/fstab | grep "noexec" ; then
+	if grep "[[:space:]]/tmp[[:space:]]" /etc/fstab | grep "noexec" >/dev/null; then
 		printf "\e[32mPASS\e[0m\n"
 	else
 		printf "\e[31mFAIL\e[0m\n"
@@ -29,38 +29,38 @@ else
 fi
 
 printf "Checking if /var is on a separate partition: "
-if grep "[[:space:]]/var[[:space:]]" /etc/fstab ; then
+if grep "[[:space:]]/var[[:space:]]" /etc/fstab >/dev/null; then
 	printf "\e[32mPASS\e[0m\n"
 else
 	printf "\e[31mFAIL\e[0m\n"
 fi
 
 printf "Checking if /var/tmp is bound to /tmp: "
-if grep -e "^/tmp[[:space:]]" /etc/fstab | grep /var/tmp ; then
+if grep -e "^/tmp[[:space:]]" /etc/fstab | grep /var/tmp >/dev/null; then
 	printf "\e[32mPASS\e[0m\n"
 else
 	printf "\e[31mFAIL\e[0m\n"
 fi
 
 printf "Checking if /var/log is on a separate partition: "
-if grep "[[:space:]]/var/log[[:space:]]" /etc/fstab ; then
+if grep "[[:space:]]/var/log[[:space:]]" /etc/fstab >/dev/null; then
 	printf "\e[32mPASS\e[0m\n"
 else
 	printf "\e[31mFAIL\e[0m\n"
 fi
 
 printf "Checking if /var/log/audit is on a separate partition: "
-if grep "[[:space:]]/var/log/audit[[:space:]]" /etc/fstab ; then
+if grep "[[:space:]]/var/log/audit[[:space:]]" /etc/fstab >/dev/null; then
 	printf "\e[32mPASS\e[0m\n"
 else
 	printf "\e[31mFAIL\e[0m\n"
 fi
 
 printf "Checking if /home is on a separate partition: "
-if grep "[[:space:]]/home[[:space:]]" /etc/fstab ; then
+if grep "[[:space:]]/home[[:space:]]" /etc/fstab >/dev/null; then
 	printf "\e[32mPASS\e[0m\n"
 	printf "Checking if /home has nodev: "
-	if grep "[[:space:]]/home[[:space:]]" /etc/fstab | grep "nodev" ; then
+	if grep "[[:space:]]/home[[:space:]]" /etc/fstab | grep "nodev" >/dev/null; then
 		printf "\e[32mPASS\e[0m\n"
 	else
 		printf "\e[31mFAIL\e[0m\n"
