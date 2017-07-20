@@ -9,6 +9,17 @@ if [ "$EUID" -ne 0 ] ; then
 	exit
 fi
 
+if [ -e /etc/redhat-release ] ; then
+	printf "\e[1mRunning Scan for "
+	printf "$(cat /etc/redhat-release)"
+	printf "\e[0m\n"
+else
+	printf "\e[31m\e[1mYou are not on a Red Hat System!\n"
+	printf "Press any key to exit\e[0m\n"
+	read -n 1 -s
+	kill -9 $PPID
+fi
+
 function ctrl_C() {
 	kill -9 $PPID	
 }
@@ -18,9 +29,8 @@ function ctrl_Z() {
 }
 
 trap ctrl_C INT
-trap ctrl_Z INT
+trap ctrl_Z 2 20
 
-printf "\e[1mRunning Scan for Red Hat Enterprise Linux 7.3 System Configurations\n"
 printf "Go grab a coffee. This is going to take a while to complete.\n"
 printf "\e[31mCtrl+C and Ctrl+Z will immediately close the current terminal window.\e[0m\n"
 printf "\e[1mChecks on Partitions and Files\e[0m\n"
