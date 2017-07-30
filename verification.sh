@@ -140,7 +140,7 @@ fi
 #modprobe -n (dry run - do not execute) -v (verbose) {}. '{}' is a simplified for loop for command line.
 printf "\e[1mChecks on System Configurations\e[0m\n"
 printf "Checking if legacy file systems are supported on the system: "
-if [[ $(modprobe -n -v {cramfs,freexvfs,jffs2,hfs,hfsplus,squashfs,udf}) ]]; then
+if [[ $(modprobe -n -v [cramfs,freexvfs,jffs2,hfs,hfsplus,squashfs,udf]) ]]; then
 	printf "\e[31mFAIL\e[0m\n"
 else
 	printf "\e[32mPASS\e[0m\n"
