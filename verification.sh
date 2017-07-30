@@ -197,55 +197,54 @@ if [[ $(rpm -q xinetd | grep "not installed") ]] ; then
 	printf "\e[32mPASS\e[0m\n"
 else
 	printf "\e[31mxinetd is installed. Remove if not needed\e[0m\n"
-fi
+	printf "Checking if chargen-dgram is disabled: "
+	if [[ $(chkconfig --list chargen-dgram 2>/dev/null | grep "chargen-dgram[[:space:]]off") ]] ; then
+		printf "\e[32mPASS\e[0m\n"
+	else
+		printf "\e[31mFAIL\e[0m\n"
+	fi
 
-printf "Checking if chargen-dgram is disabled: "
-if [[ $(chkconfig --list chargen-dgram 2>/dev/null | grep "chargen-dgram[[:space:]]off") ]] ; then
-	printf "\e[32mPASS\e[0m\n"
-else
-	printf "\e[31mFAIL\e[0m\n"
-fi
+	printf "Checking if chargen-stream is disabled: "
+	if [[ $(chkconfig --list chargen-stream 2>/dev/null | grep "chargen-stream[[:space:]]off") ]] ; then
+		printf "\e[32mPASS\e[0m\n"
+	else
+		printf "\e[31mFAIL\e[0m\n"
+	fi
 
-printf "Checking if chargen-stream is disabled: "
-if [[ $(chkconfig --list chargen-stream 2>/dev/null | grep "chargen-stream[[:space:]]off") ]] ; then
-	printf "\e[32mPASS\e[0m\n"
-else
-	printf "\e[31mFAIL\e[0m\n"
-fi
+	printf "Checking if daytime-dgram is disabled: "
+	if [[ $(chkconfig --list daytime-dgram 2>/dev/null | grep "daytime-dgram[[:space:]]off") ]] ; then
+		printf "\e[32mPASS\e[0m\n"
+	else
+		printf "\e[31mFAIL\e[0m\n"
+	fi
 
-printf "Checking if daytime-dgram is disabled: "
-if [[ $(chkconfig --list daytime-dgram 2>/dev/null | grep "daytime-dgram[[:space:]]off") ]] ; then
-	printf "\e[32mPASS\e[0m\n"
-else
-	printf "\e[31mFAIL\e[0m\n"
-fi
+	printf "Checking if daytime-stream is disabled: "
+	if [[ $(chkconfig --list daytime-stream 2>/dev/null | grep "daytime-stream[[:space:]]off") ]] ; then
+		printf "\e[32mPASS\e[0m\n"
+	else
+		printf "\e[31mFAIL\e[0m\n"
+	fi
 
-printf "Checking if daytime-stream is disabled: "
-if [[ $(chkconfig --list daytime-stream 2>/dev/null | grep "daytime-stream[[:space:]]off") ]] ; then
-	printf "\e[32mPASS\e[0m\n"
-else
-	printf "\e[31mFAIL\e[0m\n"
-fi
+	printf "Checking if echo-dgram is disabled: "
+	if [[ $(chkconfig --list echo-dgram 2>/dev/null | grep "echo-dgram[[:space:]]off") ]] ; then
+		printf "\e[32mPASS\e[0m\n"
+	else
+		printf "\e[31mFAIL\e[0m\n"
+	fi
 
-printf "Checking if echo-dgram is disabled: "
-if [[ $(chkconfig --list echo-dgram 2>/dev/null | grep "echo-dgram[[:space:]]off") ]] ; then
-	printf "\e[32mPASS\e[0m\n"
-else
-	printf "\e[31mFAIL\e[0m\n"
-fi
+	printf "Checking if echo-stream is disabled: "
+	if [[ $(chkconfig --list echo-stream 2>/dev/null | grep "echo-stream[[:space:]]off") ]] ; then
+		printf "\e[32mPASS\e[0m\n"
+	else
+		printf "\e[31mFAIL\e[0m\n"
+	fi
 
-printf "Checking if echo-stream is disabled: "
-if [[ $(chkconfig --list echo-stream 2>/dev/null | grep "echo-stream[[:space:]]off") ]] ; then
-	printf "\e[32mPASS\e[0m\n"
-else
-	printf "\e[31mFAIL\e[0m\n"
-fi
-
-printf "Checking if tcpmux-server is disabled: "
-if [[ $(chkconfig --list tcpmux-serer 2>/dev/null | grep "tcpmux-server[[:space:]]off") ]]  ; then
-	printf "\e[32mPASS\e[0m\n"
-else
-	printf "\e[31mFAIL\e[0m\n"
+	printf "Checking if tcpmux-server is disabled: "
+	if [[ $(chkconfig --list tcpmux-serer 2>/dev/null | grep "tcpmux-server[[:space:]]off") ]]  ; then
+		printf "\e[32mPASS\e[0m\n"
+	else
+		printf "\e[31mFAIL\e[0m\n"
+	fi
 fi
 
 printf "Checking if umask is of the recommended value: "
@@ -316,28 +315,28 @@ else
 fi
 
 printf "Checking if FTP is removed: "
-if [[ $(yum list ftp &>/dev/null | grep "Available packages") ]] ; then
+if [[ $(rpm -qa &>/dev/null | grep "ftp") ]] ; then
 	printf "\e[32mFTP is not installed\e[0m\n"
 else
 	printf "\e[31mFTP is installed. Consider switching to VSFTPD\e[0m\n"
 fi
 
 printf "Checking if HTTP service is removed: "
-if [[ $(yum list httpd &>/dev/null | grep "Available packages") ]] ; then
+if [[ $(rpm -qa &>/dev/null | grep "httpd") ]] ; then
 	printf "\e[32mHTTPD is not installed\e[0m\n"
 else
 	printf "\e[31mHTTPD is installed\e[0m\n"
 fi
 
 printf "Checking if HTTP Proxy Server is removed: "
-if [[ $(yum list squid &>/dev/null | grep "Available packages") ]] ; then
+if [[ $(rpm -qa &>/dev/null | grep "squid") ]] ; then
 	printf "\e[32mHTTP Proxy Server is not installed\e[0m\n"
 else
 	printf "\e[31mHTTPD Proxy Server installed\e[0m\n"
 fi
 
 printf "Checking if SNMP Service is removed: "
-if [[ $(yum list net-snmp &>/dev/null | grep "Available packages") ]] ; then
+if [[ $(rpm -qa &>/dev/null | grep "net-snmp") ]] ; then
 	printf "\e[32mSNMP Service is not installed\e[0m\n"
 else
 	printf "\e[31mSNMP Service is installed\e[0m\n"
