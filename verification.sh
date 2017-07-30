@@ -255,7 +255,7 @@ else
 fi
 
 printf "Checking if GUI is the default boot target: "
-if [[ $(ls -l /etc/systemd/system/default.target | grep "graphical.target") ]] ; then
+if [[ $(systemctl get-default | grep "graphical.target") ]] ; then
 	printf "\e[32mGUI is the default boot target. Check if CLI is preferred and X11 can be removed\e[0m\n"
 else
 	printf "\e[31mGUI is not the default boot target - please check and decide if X11 can be removed\e[0m\n"
