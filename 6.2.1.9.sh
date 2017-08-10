@@ -1,4 +1,5 @@
 #!/bin/bash
+
 #6.2.1.9
 printf "Checking if modification of system's mandatory access controls are recorded: "
 if grep \/etc\/selinux /etc/audit/audit.rules | grep "w /etc/selinux/ -p wa -k MAC-policy" >/dev/null; then
