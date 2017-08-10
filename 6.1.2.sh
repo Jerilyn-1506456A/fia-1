@@ -1,4 +1,5 @@
 #!/bin/bash
+
 #6.1.2
 printf "Checking if rsyslog is enabled: "
 if systemctl is-enabled rsyslog | grep "enabled" >/dev/null ; then
