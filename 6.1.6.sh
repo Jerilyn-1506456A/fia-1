@@ -1,5 +1,4 @@
 #!/bin/bash
-
 #6.1.6
 printf "Checking if rsyslog is listening for remote messages: "
 printf "ModLoad imtcp.so: "
