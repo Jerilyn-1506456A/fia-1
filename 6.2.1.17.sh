@@ -1,5 +1,4 @@
 #!/bin/bash
-
 #6.2.1.17
 printf "Checking if changes to /etc/sudoers are recorded: "
 if grep scope /etc/audit/audit.rules | grep "w /etc/sudoers -p wa -k scope" >/dev/null ; then
