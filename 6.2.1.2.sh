@@ -1,4 +1,5 @@
 #!/bin/bash
+
 #6.2.1.2
 printf "Checking if audit logs are retained: "
 if grep max_log_file_action /etc/audit/auditd.conf | grep "keep_logs" > /dev/null ; then
