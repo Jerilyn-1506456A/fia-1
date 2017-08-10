@@ -1,4 +1,5 @@
 #!/bin/bash
+
 #6.1.4
 printf "Checking if /var/log/messages is root root: "
 if ls -l /var/log/messages | grep "root root" >/dev/null ; then
