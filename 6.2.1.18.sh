@@ -1,4 +1,5 @@
 #!/bin/bash
+
 #6.2.1.18
 printf "Checking if administrator activity is recorded: "
 if grep actions /etc/audit/audit.rules | grep "w /var/log/sudo.log -p wa -k actions" >/dev/null ; then
