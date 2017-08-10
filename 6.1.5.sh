@@ -1,4 +1,5 @@
 #!/bin/bash
+
 #6.1.5
 printf "Checking if rsyslog sends logs to remote log host: "
 if grep "^*.*[^|][^|]*@" /etc/rsyslog.conf >/dev/null ; then
