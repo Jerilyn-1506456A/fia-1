@@ -1,4 +1,5 @@
 #!/bin/bash
+
 #5.1
 printf "Checking if core dumps are restricted: \n"
 grep "hard" /etc/security/limits.conf
