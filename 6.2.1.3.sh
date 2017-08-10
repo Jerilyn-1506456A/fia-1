@@ -1,4 +1,5 @@
 #!/bin/bash
+
 #6.2.1.3
 printf "Checking if space_left_action = email: "
 if grep space_left_action /etc/audit/auditd.conf | grep "email" >/dev/null ; then
