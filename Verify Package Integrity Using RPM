@@ -1,0 +1,8 @@
+#rpm -q: query, -V: verify package, -a: all packages
+printf "\e[1mChecks on Packages and Services\e[0m\n"
+printf "Checking if any packages are problematic: "
+if [[ $(rpm -qVa | awk '$2 != "c" { print $0}' &>/dev/null | head -n 1) ]] ; then
+	printf "\e[31mFAIL\e[0m\n"
+else
+	printf "\e[32mPASS\e[0m\n"
+f
