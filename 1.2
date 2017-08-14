@@ -1,3 +1,5 @@
+#!/bin/bash
+
 printf "Checking if /tmp has nodev: "
 #Output to /dev/null [>/dev/null] (supresses output so output is cleaner)
 if [[ $(grep "[[:space:]]/tmp[[:space:]]" /etc/fstab | grep "nodev") ]] ; then
