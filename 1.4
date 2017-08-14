@@ -1,3 +1,5 @@
+#!/bin/bash
+
 printf "Checking if /tmp has noexec: "
 if [[ $(grep "[[:space:]]/tmp[[:space:]]" /etc/fstab | grep "noexec") ]] ; then
 	printf "\e[32mPASS\e[0m\n"
