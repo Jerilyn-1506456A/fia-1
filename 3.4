@@ -1,3 +1,4 @@
+
 printf "Checking if CUPS has been disabled: "
 if [[ $(systemctl is-active cups | grep "active") ]] || [[ $(systemctl is-enabled cups | grep "enabled") ]] ; then
 	printf "\e[31mCUPS enabled. Remove if not needed\e[0m\n"
