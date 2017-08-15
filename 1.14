@@ -1,3 +1,4 @@
+
 #find under '/', ! (not) -permission that is 1000 (sticky bit), but has -permission 0002 (others - write), file type - file. As long as there is a single output (head -n 1), return true.
 printf "Checking if sticky bits are enabled: "
 if [ -n "$(find / \! -perm /1000 -perm /0002 -type f | head -n 1)" ] ; then
