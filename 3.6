@@ -1,3 +1,4 @@
+
 printf "Checking NTP configurations: "
 if [[ $(yum list ntp &>/dev/null | grep "Installed Packages") ]] ; then
 	if [[ $(grep "^restrict default" /etc/ntp.conf) ]] && [[ $(grep "^restrict -6 default" /etc/ntp.conf) ]] && [[ $(grep "^server" /etc/ntp.conf) ]] && [[ $(grep "ntp:ntp" /etc/sysconfig/ntpd) ]] ; then
