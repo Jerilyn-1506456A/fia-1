@@ -1,3 +1,4 @@
+
 printf "Checking if /var/log/audit is on a separate partition: "
 if [[ $(grep "[[:space:]]/var/log/audit[[:space:]]" /etc/fstab) ]] ; then
 	printf "\e[32mPASS\e[0m\n"
