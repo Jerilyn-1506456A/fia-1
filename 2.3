@@ -1,3 +1,4 @@
+
 printf "Checking if NIS is not installed: "
 if [[ $(rpm -q ypserv | grep "not installed" >/dev/null && rpm -q ypbind | grep "not installed") ]] ; then
 	printf "\e[32mPASS\e[0m\n"
