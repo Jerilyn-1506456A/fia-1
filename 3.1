@@ -1,3 +1,4 @@
+
 printf "Checking if umask is of the recommended value: "
 if [[ $(grep ^umask /etc/sysconfig/init | grep "027") ]]; then
 	printf "\e[32mPASS\e[0m\n"
