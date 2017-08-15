@@ -1,3 +1,4 @@
+
 printf "Checking if /home has nodev: "
 if [[ $(grep "[[:space:]]/home[[:space:]]" /etc/fstab | grep "nodev") ]]; then
 	printf "\e[32mPASS\e[0m\n"
