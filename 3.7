@@ -1,3 +1,4 @@
+
 printf "Checking if LDAP is removed: "
 if [[ $(yum list { openldap-clients, openldap-servers } &>/dev/null | grep "Installed Packages") ]] ; then
 	printf "\e[31mLDAP is installed. Remove if not needed\e[0m\n"
