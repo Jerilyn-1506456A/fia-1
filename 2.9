@@ -1,3 +1,4 @@
+
 printf "Checking if echo-dgram is disabled: "
 if [[ $(chkconfig --list echo-dgram 2>/dev/null | grep "echo-dgram[[:space:]]off") ]] ; then
 	printf "\e[32mPASS\e[0m\n"
