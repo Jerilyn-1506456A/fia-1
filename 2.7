@@ -1,3 +1,4 @@
+
 printf "Checking if chargen-stream is disabled: "
 if [[ $(chkconfig --list chargen-stream 2>/dev/null | grep "chargen-stream[[:space:]]off") ]] ; then
 	printf "\e[32mPASS\e[0m\n"
