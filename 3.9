@@ -1,3 +1,4 @@
+
 printf "Checking if DNS is disabled: "
 if [[ $(systemctl is-enabled named &>/dev/null | grep "enabled") ]] ; then
 	printf "\e[31mDNS is enabled. Disable if not needed\e[0m\n"
